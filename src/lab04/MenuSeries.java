@@ -4,8 +4,12 @@ package lab04;
 import java.util.Scanner;
 
 /**
+ * Classe de Criação/Mostragem de Menu.
  *
- * @author Cayque
+ * @author   Cayque Rennã Ferreira Silva, cayque.ti@gmail.com
+ * @version 1.0
+ * <br>
+ * Copyright (C) 1999 Universidade Estadual da Paraíba.
  */
 public class MenuSeries {
  
@@ -19,7 +23,10 @@ public class MenuSeries {
     private int termoPa;
     private int termosGeral;
     
-    
+    /**
+     *  Chama o menu principal 
+     */
+     
     
     public void chamarMenu(){
         System.out.println("\n********************************************************************************");
@@ -35,7 +42,9 @@ public class MenuSeries {
         System.out.println("********************************************************************************");
     }
     
-    
+    /**
+     * Chama a criação da pa
+     */
     public void menuCriarPa(){
         System.out.print("\nDigite o primeiro termo: ");
         primeiroTermo = sc.nextInt();
@@ -44,12 +53,18 @@ public class MenuSeries {
         pa = new ProgressaoAritmetica(primeiroTermo, razao);
     }
     
+    /**
+     * Chama a criação da série de Fibonacci
+     */
     public void menuCriarFibonacci(){
         System.out.print("\nDigite a quantidade de termos da sequencia Fibonacci: ");
         qntFibonacci=sc.nextInt();
         fibo = new SerieFibonnacci(qntFibonacci);
     }
 
+    /**
+     * Mostra o termo selecionado da PA.
+     */
     public void menuVerTermoPa(){
         if(pa!=null){
             System.out.println("\nDigite o termo da PA que você deseja ver: ");
@@ -60,6 +75,9 @@ public class MenuSeries {
         }
     }
     
+    /**
+     * Mostra o termo selecionado da serie de Fibonacci.
+     */
     public void menuVerTermoFibonacci(){
         if(fibo!=null){
             System.out.println("\nDigite o termo da serie Fibonacci que você deseja ver: ");
@@ -70,6 +88,9 @@ public class MenuSeries {
         }
     }
     
+    /**
+     * Mostra a Série de Fibonacci e a PA.
+     */
     public void mostrarFiboEPa(){
         if(pa!=null && fibo!=null){
             System.out.println("\nDigite quantos termos você deseja ver da PA e da Série de Fibonacci: ");

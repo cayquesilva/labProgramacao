@@ -4,8 +4,12 @@ package lab04;
 import java.util.Scanner;
 
 /**
- * Classe para manipular series matematicas (Usando uma classe ProgressaoAritmetica).
+ * Classe de manipulação de PAs e Sequencias de Fibonacci.
  *
+ * @author   Cayque Rennã Ferreira Silva, cayque.ti@gmail.com
+ * @version 1.0
+ * <br>
+ * Copyright (C) 1999 Universidade Estadual da Paraíba.
  */
 public class ExplorandoOMundoDasSeries {
     public static void main(String[] args) {
