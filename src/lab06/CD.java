@@ -121,14 +121,6 @@ public class CD {
     }
 
     /**
-     * Define as faixas do CD, adicionando-as na lista do cd, uma por uma.
-     * @param faixas faixas do cd. 
-     */
-    public void setFaixas(List<String> faixas) {
-        this.faixas = faixas;
-    }
-
-    /**
      * Muda a musica/faixa principal do CD. Obrigatório a faixa existir no CD.
      * @param musica musica desejada a ser a faixa principal.
      * @return resultado booleano de acordo com o sucesso da alteração.

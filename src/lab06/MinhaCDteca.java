@@ -114,7 +114,7 @@ public class MinhaCDteca {
     public String toString() {
         String retorno="";
         for(CD a : cds){
-            retorno.concat("Título: "+a.getTitulo()+" - Artista: "+a.getArtista()+"\n");
+            retorno+="Título: "+a.getTitulo()+" - Artista: "+a.getArtista()+"\n";
         }
         return "MinhaCDteca \n" + retorno;
     }
