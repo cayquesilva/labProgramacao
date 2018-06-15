@@ -14,8 +14,8 @@ public class Sala {
     
     static EnumPosicao OCUPADO,LIVRE;
     
-    private final int numeroDeLinhas;
-    private final int numeroDeColunas;
+    private int numeroDeLinhas;
+    private int numeroDeColunas;
     private final char obstaculo='O';
     private final char robo='R';
     private static char posicoes[][] = new char[10][10];
@@ -29,8 +29,10 @@ public class Sala {
         this.numeroDeColunas = numeroDeColunas;
         for(int i=0;i<numeroDeLinhas;i++){
             for(int j=0;j<numeroDeColunas;j++){
+                System.out.print("|");
                 posicoes[i][j]=' ';
             }
+            System.out.println("");
         }
     }
 
@@ -69,11 +71,13 @@ public class Sala {
     
     public boolean posicaoValida(int posicaoHorizontal, int posicaoVertical){
         if(isPosicaoLivre(posicaoHorizontal, posicaoVertical) && 
-                posicaoHorizontal<posicoes.length && posicaoVertical<posicoes[1].length &&
-                posicaoHorizontal>=0 && posicaoVertical>=0){
+            posicaoHorizontal<posicoes.length && posicaoVertical<posicoes[1].length &&
+            posicaoHorizontal>=0 && posicaoVertical>=0){
             return true;
+        }else{
+            return false;
         }
-        return false;
+        
     }
     
     public boolean isPosicaoLivre(int posicaoHorizontal, int posicaoVertical){
@@ -86,16 +90,19 @@ public class Sala {
     }
     
     public boolean setPosicao(int posicaoHorizontal, int posicaoVertical,EnumPosicao tipoPosicao){
-        if(isPosicaoLivre(posicaoHorizontal, posicaoVertical) && 
-                posicaoValida(posicaoHorizontal,posicaoVertical) && tipoPosicao==LIVRE){
+        if(isPosicaoLivre(posicaoHorizontal, posicaoVertical) && tipoPosicao==LIVRE && 
+                posicaoValida(posicaoHorizontal, posicaoVertical)){
             this.tipoPosicao = Sala.LIVRE;
+            posicoes[posicaoHorizontal][posicaoVertical]=' ';
             return true; //falta verificar
-        }else{
+        }else if(isPosicaoLivre(posicaoHorizontal, posicaoVertical) && tipoPosicao==OCUPADO && 
+                posicaoValida(posicaoHorizontal, posicaoVertical)){
             posicoes[posicaoHorizontal][posicaoVertical]='O';
             this.tipoPosicao = Sala.OCUPADO;
-            return false; // falta verificar
+            return true; // falta verificar
+        }else{
+            return false;
         }
-        
     }
     
     
