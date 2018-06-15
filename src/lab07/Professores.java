@@ -8,8 +8,7 @@ public class Professores extends Contribuintes{
     
     private double salario, materialDidatico;
     private final double salarioMinino = 954;
-    private double totalCasa, totalCarro;
-    private double armazenaCasa, ArmazenaCarro;
+    private double sinalRiqueza;
     
     public Professores(String nome, int numeroDeContribuinte) {
         super(nome, numeroDeContribuinte);
@@ -19,14 +18,24 @@ public class Professores extends Contribuintes{
         return salario;
     }
 
-    public void setSalario(double salario) {
-        this.salario = salario;
-        setTributação(salario);
+    public boolean setSalario(double salario) {
+        if(salario>0){
+            this.salario = salario;
+            setTributação(salario); 
+            return true;
+        }else{
+            return false;
+        }
     }
     
-    public void setMaterialDidatico(double material){
-        this.materialDidatico = material;
-        super.setDescontos(material/2);
+    public boolean setMaterialDidatico(double material){
+        if(material>=0){
+            this.materialDidatico = material;
+            super.setDescontos(material/2);  
+            return true;
+        }else{
+            return false;
+        }      
     }
     
     public double getMaterialDidatico(){
@@ -45,31 +54,15 @@ public class Professores extends Contribuintes{
             }
         }
     }
-    
-    public double getTotalCasa() {
-        this.totalCasa = super.getValorCasa();
-        return totalCasa;
+
+    @Override
+    public double getSinalRiqueza() {
+        return sinalRiqueza;
     }
 
-    public double getTotalCarro() {
-        this.totalCarro = super.getValorCarro();
-        return totalCarro;
-    }
-
-    public void setArmazenaCasa(){
-        this.armazenaCasa +=getTotalCasa();
-    }
-    
-    public void setArmazenaCarro(){
-        this.armazenaCasa +=getTotalCarro();
-    }
-    
-    public double getArmazenaCasa() {
-        return armazenaCasa;
-    }
-
-    public double getArmazenaCarro() {
-        return ArmazenaCarro;
+    @Override
+    public void setSinalRiqueza() {
+        this.sinalRiqueza += getValorCasa()+getValorCasa();
     }
     
 }

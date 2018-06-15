@@ -8,8 +8,7 @@ public class Caminhoneiros extends Contribuintes{
     
     private double toneladas;
     private double kmAnual;
-    private double totalCasa, totalCarro;
-    private double armazenaCasa, ArmazenaCarro;
+    private double sinalRiqueza;
     
     public Caminhoneiros(String nome, int numeroDeContribuinte) {
         super(nome, numeroDeContribuinte);
@@ -19,18 +18,28 @@ public class Caminhoneiros extends Contribuintes{
         return toneladas;
     }
 
-    public void setToneladas(double toneladas) {
-        this.toneladas = toneladas;
-        setTributação(toneladas);
+    public boolean setToneladas(double toneladas) {
+        if(toneladas >=0){
+           this.toneladas = toneladas;
+            setTributação(toneladas);
+            return true; 
+        }else{
+            return false;
+        } 
     }
 
     public double getKmAnual() {
         return kmAnual;
     }
 
-    public void setKmAnual(double kmAnual) {
-        this.kmAnual = kmAnual;
-        super.setDescontos(0.01*kmAnual);
+    public boolean setKmAnual(double kmAnual) {
+        if(kmAnual>=0){
+            this.kmAnual = kmAnual;
+            super.setDescontos(0.01*kmAnual);   
+            return true;
+        }else{
+            return false;
+        }
     }
     
     @Override
@@ -41,31 +50,16 @@ public class Caminhoneiros extends Contribuintes{
             super.setTributação(500+(100*(getToneladas()-10)));
         }
     }
+
+    @Override
+    public double getSinalRiqueza() {
+        return sinalRiqueza;
+    }
+
+    @Override
+    public void setSinalRiqueza() {
+        this.sinalRiqueza += getValorCasa()+getValorCasa();
+    }
  
-    public double getTotalCasa() {
-        this.totalCasa = super.getValorCasa();
-        return totalCasa;
-    }
-
-    public double getTotalCarro() {
-        this.totalCarro = super.getValorCarro();
-        return totalCarro;
-    }
-
-    public void setArmazenaCasa(){
-        this.armazenaCasa +=getTotalCasa();
-    }
-    
-    public void setArmazenaCarro(){
-        this.armazenaCasa +=getTotalCarro();
-    }
-    
-    public double getArmazenaCasa() {
-        return armazenaCasa;
-    }
-
-    public double getArmazenaCarro() {
-        return ArmazenaCarro;
-    }
     
 }

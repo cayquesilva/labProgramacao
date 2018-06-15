@@ -13,6 +13,8 @@ public class Contribuintes {
     private double valorCasa, valorCarro;
     private double tributação;
     private double descontos;
+    private double sinalRiqueza;
+    
 
     
     public Contribuintes(String nome, int numeroDeContribuinte) {
@@ -89,6 +91,12 @@ public class Contribuintes {
         this.descontos = desconto;
     }
     
-    
+    public double getSinalRiqueza() {
+        return sinalRiqueza;
+    }
+
+    public void setSinalRiqueza() {
+        this.sinalRiqueza += getValorCarro()+getValorCasa();
+    }
     
 }
