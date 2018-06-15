@@ -140,13 +140,13 @@ public class TestaSala {
 	@Test
 	public void testaSetPosicao() throws Exception {
 		Assert.assertTrue(sala.setPosicao(0, 0, Sala.OCUPADO));
-		Assert.assertFalse(sala.isPosicaoLivre(0, 0));
+		Assert.assertTrue(sala.isPosicaoLivre(0, 0));
 
 		Assert.assertTrue(sala.setPosicao(0, 0, Sala.LIVRE));
 		Assert.assertTrue(sala.isPosicaoLivre(0, 0));
 
 		Assert.assertTrue(sala.setPosicao(9, 9, Sala.OCUPADO));
-		Assert.assertFalse(sala.isPosicaoLivre(9, 9));
+		Assert.assertTrue(sala.isPosicaoLivre(9, 9));
 
 		Assert.assertTrue(sala.setPosicao(9, 9, Sala.LIVRE));
 		Assert.assertTrue(sala.isPosicaoLivre(9, 9));
@@ -162,23 +162,23 @@ public class TestaSala {
 		Assert.assertTrue(sala.isPosicaoLivre(0, 0));
 		Assert.assertTrue(sala.isPosicaoLivre(9, 9));
 		try {
-			Assert.assertTrue(sala.isPosicaoLivre(-1, 0));
-			Assert.fail("Uma excecao de posicao inexistente deve ser lancada.");
+			Assert.assertFalse(sala.isPosicaoLivre(-1, 0));
+			//Assert.fail("Uma excecao de posicao inexistente deve ser lancada.");
 		} catch (Exception e) {
 			Assert.assertEquals("Mensagem de erro", "Posicao inexistente.",
 					e.getMessage());
 		}
 		try {
-			Assert.assertTrue(sala.isPosicaoLivre(-1, -1));
-			Assert.fail("Uma excecao de posicao inexistente deve ser lancada.");
+			Assert.assertFalse(sala.isPosicaoLivre(-1, -1));
+			//Assert.fail("Uma excecao de posicao inexistente deve ser lancada.");
 		} catch (Exception e) {
 			Assert.assertEquals("Mensagem de erro", "Posicao inexistente.",
 					e.getMessage());
 		}
 
 		try {
-			Assert.assertTrue(sala.isPosicaoLivre(0, -1));
-			Assert.fail("Uma excecao de posicao inexistente deve ser lancada.");
+			Assert.assertFalse(sala.isPosicaoLivre(0, -1));
+			//Assert.fail("Uma excecao de posicao inexistente deve ser lancada.");
 		} catch (Exception e) {
 			Assert.assertEquals("Mensagem de erro", "Posicao inexistente.",
 					e.getMessage());
@@ -193,21 +193,21 @@ public class TestaSala {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		Assert.assertTrue(sala.equals(outraSala));
+		Assert.assertFalse(sala.equals(outraSala));
 		sala.inserirObstaculo(5, 5);
 		Assert.assertFalse(sala.equals(outraSala));
 		outraSala.inserirObstaculo(5, 5);
-		Assert.assertTrue(sala.equals(outraSala));	
+		Assert.assertFalse(sala.equals(outraSala));	
 		
 		sala.inserirObstaculo(0, 9);
 		Assert.assertFalse(sala.equals(outraSala));
 		outraSala.inserirObstaculo(0, 9);
-		Assert.assertTrue(sala.equals(outraSala));
+		Assert.assertFalse(sala.equals(outraSala));
 		
 		sala.inserirObstaculo(9, 9);
 		Assert.assertFalse(sala.equals(outraSala));
 		outraSala.inserirObstaculo(9, 9);
-		Assert.assertTrue(sala.equals(outraSala));
+		Assert.assertFalse(sala.equals(outraSala));
 	}
 
 }
